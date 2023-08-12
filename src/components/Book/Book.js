@@ -3,13 +3,14 @@ import axios from 'axios';
 import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Book.css";
+const BASE_URL = process.env.BASE_URL;
 
 const Book = (props) => {
     const history = useNavigate();
     const { _id, name, author, description, price, image } = props.book;
     const deleteHandler = async() => {
     await axios
-    .delete(`http://localhost:5000/books/${_id}`)
+    .delete(`${BASE_URL}/books/${_id}`)
     .then(res=>res.data)
     .then(() => history("/"))
     .then(()=> history("/books"));
