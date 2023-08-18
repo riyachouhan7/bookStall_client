@@ -19,14 +19,14 @@ const BookDetail = () => {
     useEffect(() => {
         const fetchHandler = async() => {
             await axios
-            .get(`http://localhost:5000/books/${id}`)
+            .get(`https://bookstallserver.onrender.com/books/${id}`)
             .then(res => res.data).then(data => setInputs(data.book));
         };
         fetchHandler()
     },[id]);
 
     const sendRequest = async() => {
-        await axios.put(`http://localhost:5000/books/${id}`, {
+        await axios.put(`https://bookstallserver.onrender.com/books/${id}`, {
             name: String(inputs.name),
             author: String(inputs.author),
             price: Number(inputs.price),
